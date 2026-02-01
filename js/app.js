@@ -1,23 +1,30 @@
-const btn = document.getElementById("toggle-theme");
+const toggleBtn = document.getElementById("toggle-theme");
 
-// carregar tema salvo
-if (localStorage.getItem("theme") === "dark") {
+// Se não existir tema salvo, começa no DARK
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+  document.body.classList.remove("dark");
+  toggleBtn.textContent = "🌙";
+} else {
   document.body.classList.add("dark");
-  btn.textContent = "☀️";
+  toggleBtn.textContent = "☀️";
+  localStorage.setItem("theme", "dark");
 }
 
-// alternar tema
-btn.addEventListener("click", () => {
+// Alternar tema
+toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
 
   if (document.body.classList.contains("dark")) {
     localStorage.setItem("theme", "dark");
-    btn.textContent = "☀️";
+    toggleBtn.textContent = "☀️";
   } else {
     localStorage.setItem("theme", "light");
-    btn.textContent = "🌙";
+    toggleBtn.textContent = "🌙";
   }
 });
+
 
 const macInput = document.getElementById("mac-input");
 const result = document.getElementById("result");
