@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* CLARO */
+body {
+  background: #f4f6f8;
+  color: #111;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+button {
+  font-size: 18px;
+  padding: 2px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 14px;
+  background: white;
+}
+
+/* ESCURO */
+body.dark {
+  background: #121212;
+  color: #f5f5f5;
+}
+
+body.dark main {
+  background: #1e1e1e;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 16px;
+}
+
+/* Título exatamente no centro */
+header h1 {
+  grid-column: 2;
+  text-align: center;
+}
+
+/* Botão do tema na direita */
+#toggle-theme {
+  grid-column: 3;
+  justify-self: end;
+}
+
+
+
+/* MAC TOOL */
+main h2 {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#convert-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+#copy-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+#result {
+  font-size: 18px;
+  font-weight: bold;
+  word-break: break-all;
+}
+
+/* DARK */
+body.dark input {
+  background-color: #2a2a2a;
+  color: #fff;
+  border-color: #444;
+}
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+body.dark select {
+  background-color: #2a2a2a;
+  color: #fff;
+  border-color: #444;
+}
+.format-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.format-buttons button {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 13px;        /* diminui o texto */
+  padding: 6px 8px;       /* diminui altura e largura */
+  height: 30px;           /* botão mais baixo */
+  border-radius: 6px;
+}
+
+#paste-btn {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+#result {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#copied-msg {
+  display: block;
+  margin-top: 6px;
+  color: green;
+  font-size: 14px;
+}
+
+/* DARK */
+body.dark .format-buttons button {
+  background-color: #0056b3;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MacTool</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>MacTool</h1>
+    <button id="toggle-theme">🌙</button>
+  </header>
+
+ <main>
+  <h2>Converter MAC Address</h2>
+
+  <input
+    type="text"
+    id="mac-input"
+    placeholder="Ex: aabbccddeeff ou aa:bb:cc:dd:ee:ff"
+  />
+
+  <div class="buttons">
+    <button id="paste-btn">Colar</button>
+  </div>
+
+  <div class="format-buttons">
+    <button data-format="colon">AA:BB:CC:DD:EE:FF</button>
+    <button data-format="dash">AA-BB-CC-DD-EE-FF</button>
+    <button data-format="dot">AABB.CCDD.EEFF</button>
+    <button data-format="plain">AABBCCDDEEFF</button>
+  </div>
+
+  <p id="result"></p>
+  <small id="copied-msg"></small>
+</main>
+
+
+  <script src="js/app.js"></script>
+</body>
+</html>
