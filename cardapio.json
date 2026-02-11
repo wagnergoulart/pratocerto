@@ -1,0 +1,30 @@
+{
+  "segunda": {
+    "nome": "Frango Grelhado",
+    "descricao": "Arroz, feijão, macarrão, salada e frango grelhado.",
+    "tamanhos": [
+      { "nome": "Marmita P - Frango", "preco": 18 },
+      { "nome": "Marmita P - 2 Carnes", "preco": 20 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 26 }
+    ]
+  },
+
+  "terca": {
+    "nome": "Carne de Panela",
+    "descricao": "Arroz, feijão, purê, salada e carne macia.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne", "preco": 18 },
+      { "nome": "Marmita P - 2 Carnes", "preco": 20 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 26 }
+    ]
+  },
+
+  "quarta": {
+    "nome": "Feijoada",
+    "descricao": "Feijão preto, arroz, farofa, couve e laranja.",
+    "tamanhos": [
+      { "nome": "Marmita P", "preco": 20 },
+      { "nome": "Marmita G", "preco": 28 }
+    ]
+  }
+}

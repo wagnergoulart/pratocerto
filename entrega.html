@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<title>Entrega</title>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🚚 Dados para Entrega</h1>
+
+    <!-- CARD -->
+    <div class="form-card">
+
+        <div class="form-group">
+            <label>Nome</label>
+            <input id="nome" placeholder="Seu nome">
+        </div>
+
+        <div class="form-group">
+            <label>Bairro</label>
+            <select id="bairro"></select>
+        </div>
+
+        <div class="form-group">
+            <label>Rua e número</label>
+            <input id="rua" placeholder="Ex: Rua A, 123">
+        </div>
+
+        <div class="form-group">
+            <label>Forma de pagamento</label>
+            <select id="pagamento">
+                <option>Pix</option>
+                <option>Dinheiro</option>
+                <option>Cartão</option>
+            </select>
+        </div>
+
+        <div class="form-group" id="trocoBox" style="display:none;">
+            <label>Precisa de troco para quanto?</label>
+            <input 
+                id="troco" 
+                type="number"
+                placeholder="Ex: 50"
+            >
+        </div>
+
+        <div id="taxa"></div>
+        <div id="totalFinal"></div>
+
+    </div>
+
+    <!-- BOTÃO FIXO -->
+    <div class="botao-box">
+        <button onclick="enviarWhats()">
+            Enviar Pedido
+        </button>
+    </div>
+
+</div>
+
+<script src="js/entrega.js"></script>
+</body>
+</html>

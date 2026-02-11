@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "nome": "Marmita P",
+    "descricao": "1 tipo de carne (Frango)",
+    "preco": 18
+  },
+  {
+    "id": 2,
+    "nome": "Marmita P",
+    "descricao": "2 tipos de carne",
+    "preco": 20
+  },
+  {
+    "id": 3,
+    "nome": "Marmita G",
+    "descricao": "2 tipos de carne",
+    "preco": 26
+  },
+{
+  "segunda": [
+    "Frango grelhado",
+    "Carne de panela",
+    "Linguiça"
+  ],
+  "terca": [
+    "Bife acebolado",
+    "Frango frito",
+    "Costelinha"
+  ],
+  "quarta": [
+    "Feijoada",
+    "Frango grelhado"
+  ],
+  "quinta": [
+    "Carne assada",
+    "Filé de frango"
+  ],
+  "sexta": [
+    "Peixe frito",
+    "Frango grelhado"
+  ],
+  "sabado": [
+    "Peixe frito",
+    "Frango grelhado"
+  ]
+}
+
+]

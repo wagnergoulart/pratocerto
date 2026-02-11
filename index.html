@@ -1,70 +1,36 @@
-<!--
-                                      _   _             
- _ __   _____      _____ _ __ ___  __| | | |__  _   _ 
-| '_ \ / _ \ \ /\ / / _ \ '__/ _ \/ _` | | '_ \| | | |
-| |_) | (_) \ V  V /  __/ | |  __/ (_| | | |_) | |_| |
-| .__/ \___/ \_/\_/ \___|_|  \___|\__,_| |_.__/ \__, |
-|_|                                             |___/ 
-                  ██╗    ██╗   █████╗ 
-                  ██║    ██║ ██╔════╝ 
-                  ██║ █╗ ██║ ██║   ███╗
-                  ██║███╗██║ ██║    ██║
-                  ╚███╔███╔╝  ╚██████╔╝
-                   ╚══╝╚══╝    ╚═════╝
- 
--->
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MacTool</title>
-  <link rel="icon" href="/favicon.png" type="image/png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link rel="stylesheet" href="css/style.css">
+<!---- <link rel="icon" href="favicon.png"> -->
 
-  <link rel="stylesheet" href="css/style.css">
+<title>Prato Certo</title>
 </head>
-
 <body>
-  
- <main>
 
-<header>
-  <h1>MacTool</h1>
-  <button id="toggle-theme">🌙</button>
+<div class="container">
 
-</header>   
+    <h1 id="titulo"></h1>
 
-  <h2>Converter MAC Address</h2>
+    <div id="prato" class="card"></div>
 
-  <input
-    type="text"
-    id="mac-input"
-    placeholder="Ex: aabbccddeeff ou aa:bb:cc:dd:ee:ff"
-  />
+    <div id="tamanhos"></div>
 
-  <div class="buttons">
-    <button id="paste-btn">Colar</button>
-  </div>
+    <div id="total"></div>
 
-  <div class="format-buttons">
-    <button data-format="colon">AA:BB:CC:DD:EE:FF</button>
-    <button data-format="dash">AA-BB-CC-DD-EE-FF</button>
-    <button data-format="dot">AABB.CCDD.EEFF</button>
-    <button data-format="plain">AABBCCDDEEFF</button>
-  </div>
-
-  <p id="result"></p>
-  <small id="copied-msg"></small>
-
-<footer class="footer">
-  Powered by <strong>WG</strong>
-</footer>
-
-</main>
+   <div class="botao-box">
+    <button onclick="irParaEntrega()">
+        Continuar para entrega 🚚
+    </button>
+</div>
 
 
-  <script src="js/app.js"></script>
+
+</div>
+
+<script src="js/app.js"></script>
 </body>
 </html>

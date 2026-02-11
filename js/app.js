@@ -1,82 +1,161 @@
-const toggleBtn = document.getElementById("toggle-theme");
+const telefone = "5569999979438";
 
-// Se não existir tema salvo, começa no DARK
-const savedTheme = localStorage.getItem("theme");
+let almocoHoje;
+let total = 0;
 
-if (savedTheme === "light") {
-  document.body.classList.remove("dark");
-  toggleBtn.textContent = "🌙";
-} else {
-  document.body.classList.add("dark");
-  toggleBtn.textContent = "☀️";
-  localStorage.setItem("theme", "dark");
+function gerarIDPedido(){
+    const numero = Math.floor(1000 + Math.random()*9000);
+    return "PED-" + numero;
 }
 
-// Alternar tema
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+// PEGAR DIA FORMATADO
+const data = new Date();
 
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-    toggleBtn.textContent = "☀️";
-  } else {
-    localStorage.setItem("theme", "light");
-    toggleBtn.textContent = "🌙";
-  }
+const diaFormatado = data.toLocaleDateString('pt-BR',{
+    weekday:'long'
+});
+
+const diaJSON = diaFormatado
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g,"")
+.replace("-feira","");
+
+// CAPITALIZAR
+const diaBonito =
+diaFormatado.charAt(0).toUpperCase() +
+diaFormatado.slice(1);
+
+
+// BUSCAR CARDÁPIO
+fetch("cardapio.json")
+.then(res=>res.json())
+.then(data=>{
+
+    almocoHoje = data[diaJSON];
+
+    document.getElementById("titulo").innerHTML =
+    `🍽️ ${diaBonito} — Almoço do Dia`;
+
+    document.getElementById("prato").innerHTML = `
+        <h2>${almocoHoje.nome}</h2>
+        <p>${almocoHoje.descricao}</p>
+    `;
+
+    renderTamanhos();
+    atualizarTotal(); // inicia zerado na tela
 });
 
 
-const macInput = document.getElementById("mac-input");
-const result = document.getElementById("result");
-const copiedMsg = document.getElementById("copied-msg");
-const pasteBtn = document.getElementById("paste-btn");
+// RENDER TAMANHOS
+function renderTamanhos(){
 
-function formatMac(mac, format) {
-  const clean = mac.replace(/[^a-fA-F0-9]/g, "");
-  if (clean.length !== 12) return null;
+    const div = document.getElementById("tamanhos");
+    div.innerHTML = "";
 
-  const pairs = clean.match(/.{2}/g);
+    let html = "";
 
-  switch (format) {
-    case "colon":
-      return pairs.join(":");
-    case "dash":
-      return pairs.join("-");
-    case "dot":
-      return pairs.slice(0, 3).join("") + "." + pairs.slice(3).join("");
-    case "plain":
-      return clean;
-    default:
-      return pairs.join(":");
-  }
+    almocoHoje.tamanhos.forEach((t,i)=>{
+
+        html += `
+        <div class="item">
+            <div class="item-info">
+                <strong>${t.nome}</strong><br>
+                <span class="preco">R$ ${t.preco.toFixed(2)}</span>
+            </div>
+
+            <div class="contador">
+                <button onclick="diminuir(${i})">−</button>
+                <span id="qtd-${i}">0</span>
+                <button onclick="aumentar(${i})">+</button>
+            </div>
+        </div>
+        `;
+    });
+
+    div.innerHTML = html;
 }
 
-// Clique nos botões de formato
-document.querySelectorAll(".format-buttons button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const formatted = formatMac(macInput.value, btn.dataset.format);
 
-    if (!formatted) {
-      result.textContent = "MAC inválido";
-      result.style.color = "red";
-      copiedMsg.textContent = "";
-      return;
+// CONTADORES
+function aumentar(i){
+
+    const el = document.getElementById(`qtd-${i}`);
+    let valor = parseInt(el.innerText);
+
+    el.innerText = valor + 1;
+
+    atualizarTotal();
+}
+
+function diminuir(i){
+
+    const el = document.getElementById(`qtd-${i}`);
+    let valor = parseInt(el.innerText);
+
+    if(valor > 0){
+        el.innerText = valor - 1;
     }
 
-    result.textContent = formatted;
-    result.style.color = "inherit";
+    atualizarTotal();
+}
 
-    navigator.clipboard.writeText(formatted);
-    copiedMsg.textContent = "Copiado!";
-  });
-});
 
-// Botão colar
-pasteBtn.addEventListener("click", async () => {
-  try {
-    const text = await navigator.clipboard.readText();
-    macInput.value = text;
-  } catch {
-    alert("Não foi possível colar");
-  }
-});
+// 🔥 CALCULAR TOTAL (FUNÇÃO CORRETA)
+function atualizarTotal(){
+
+    total = 0;
+
+    almocoHoje.tamanhos.forEach((t,i)=>{
+
+        const qtd =
+        Number(document.getElementById(`qtd-${i}`).innerText);
+
+        total += qtd * Number(t.preco);
+    });
+
+    document.getElementById("total")
+    .innerText = "Total: R$ " + total.toFixed(2);
+}
+
+
+// IR PARA ENTREGA
+function irParaEntrega(){
+
+    atualizarTotal(); // garante valor atualizado
+
+    if(total === 0){
+        alert("Selecione pelo menos uma marmita 🙂");
+        return;
+    }
+
+    const idPedido = gerarIDPedido();
+
+    let pedido = {
+        id: idPedido,
+        dia: diaBonito,
+        prato: almocoHoje.nome,
+        itens: [],
+        subtotal: Number(total)
+    };
+
+    almocoHoje.tamanhos.forEach((t,i)=>{
+
+        const qtd = Number(
+            document.getElementById(`qtd-${i}`).innerText);
+
+        if(qtd > 0){
+            pedido.itens.push({
+                nome: t.nome,
+                qtd: qtd,
+                preco: t.preco
+            });
+        }
+    });
+
+    localStorage.setItem(
+        "pedido",
+        JSON.stringify(pedido)
+    );
+
+    window.location.href = "entrega.html";
+}
