@@ -1,6 +1,7 @@
 const telefone = "5569999979438";
 
 let almocoHoje;
+let bebidas = [];
 let total = 0;
 
 function gerarIDPedido(){
@@ -44,6 +45,16 @@ fetch("cardapio.json")
     atualizarTotal();
 });
 
+// BUSCAR BEBIDAS
+fetch("produtos.json")
+.then(res => res.json())
+.then(data => {
+
+    bebidas = data.bebidas;
+
+    renderBebidas();
+});
+
 
 // RENDER
 function renderTamanhos(){
@@ -66,6 +77,35 @@ function renderTamanhos(){
                 <button onclick="diminuir(${i})">−</button>
                 <span id="qtd-${i}">0</span>
                 <button onclick="aumentar(${i})">+</button>
+            </div>
+        </div>
+        `;
+    });
+
+    div.innerHTML = html;
+}
+
+function renderBebidas(){
+
+    const div = document.getElementById("bebidas");
+
+    if(!div) return;
+
+    let html = "";
+
+    bebidas.forEach((b,i)=>{
+
+        html += `
+        <div class="item">
+            <div class="item-info">
+                <strong>${b.nome}</strong><br>
+                <span class="preco">R$ ${b.preco.toFixed(2)}</span>
+            </div>
+
+            <div class="contador">
+                <button onclick="diminuirBebida(${i})">−</button>
+                <span id="qtd-bebida-${i}">0</span>
+                <button onclick="aumentarBebida(${i})">+</button>
             </div>
         </div>
         `;
@@ -98,19 +138,49 @@ function diminuir(i){
     atualizarTotal();
 }
 
+function aumentarBebida(i){
+
+    const el = document.getElementById(`qtd-bebida-${i}`);
+    el.innerText = Number(el.innerText) + 1;
+
+    atualizarTotal();
+}
+
+function diminuirBebida(i){
+
+    const el = document.getElementById(`qtd-bebida-${i}`);
+
+    let valor = Number(el.innerText);
+
+    if(valor > 0){
+        el.innerText = valor - 1;
+    }
+
+    atualizarTotal();
+}
+
 
 // TOTAL
 function atualizarTotal(){
 
     total = 0;
 
+    // marmitas
     almocoHoje.tamanhos.forEach((t,i)=>{
 
-        const qtd = Number(
-            document.getElementById(`qtd-${i}`).innerText
-        ) || 0;
+        const qtd =
+        Number(document.getElementById(`qtd-${i}`)?.innerText || 0);
 
         total += qtd * Number(t.preco);
+    });
+
+    // bebidas
+    bebidas.forEach((b,i)=>{
+
+        const qtd =
+        Number(document.getElementById(`qtd-bebida-${i}`)?.innerText || 0);
+
+        total += qtd * Number(b.preco);
     });
 
     document.getElementById("total")
@@ -124,7 +194,7 @@ function irParaEntrega(){
     atualizarTotal();
 
     if(total <= 0){
-        alert("Selecione pelo menos uma marmita 🙂");
+        alert("Selecione pelo menos um item 🙂");
         return;
     }
 
@@ -133,13 +203,15 @@ function irParaEntrega(){
         dia: diaBonito,
         prato: almocoHoje.nome,
         itens: [],
+        bebidas: [],
         total: Number(total)
     };
 
+    // 🔥 MARMITAS
     almocoHoje.tamanhos.forEach((t,i)=>{
 
         const qtd = Number(
-            document.getElementById(`qtd-${i}`).innerText
+            document.getElementById(`qtd-${i}`)?.innerText || 0
         );
 
         if(qtd > 0){
@@ -147,6 +219,22 @@ function irParaEntrega(){
                 nome: t.nome,
                 qtd: qtd,
                 preco: Number(t.preco)
+            });
+        }
+    });
+
+    // 🔥 BEBIDAS
+    bebidas.forEach((b,i)=>{
+
+        const qtd = Number(
+            document.getElementById(`qtd-bebida-${i}`)?.innerText || 0
+        );
+
+        if(qtd > 0){
+            pedido.bebidas.push({
+                nome: b.nome,
+                qtd: qtd,
+                preco: Number(b.preco)
             });
         }
     });

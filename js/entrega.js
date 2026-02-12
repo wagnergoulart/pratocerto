@@ -1,11 +1,23 @@
 const telefone = "5569999979438";
 
-const pedido = JSON.parse(localStorage.getItem("pedido"));
+let pedido;
 
-if(!pedido){
+try{
+    pedido = JSON.parse(localStorage.getItem("pedido"));
+}catch{
+    pedido = null;
+}
+
+if(!pedido || !pedido.itens || pedido.itens.length === 0){
     alert("Seu carrinho está vazio!");
     window.location.href = "index.html";
 }
+
+// 🔥 garante que o total sempre exista
+pedido.total = Number(
+    pedido.total ?? pedido.subtotal ?? 0
+);
+
 
 // Compatível com versões antigas
 const subtotal = Number(
@@ -102,17 +114,27 @@ function enviarWhats(){
     const botao = document.querySelector("button");
     botao.innerText = "Enviando pedido...";
     botao.disabled = true;
-
-    let msg = `
+    
+// Corpo da mendagem enviada
+ let msg = `
 🧾 *PEDIDO ${pedido.id}*
 ━━━━━━━━━━━━━━━
 
 📅 ${pedido.dia}
-🍽️ ${pedido.prato}
+🍽️ *${pedido.prato}*
 
+📦 *Itens*
 ${pedido.itens.map(item => 
 `✅ ${item.nome} (${item.qtd}x)`
 ).join("\n")}
+
+${pedido.bebidas && pedido.bebidas.length > 0 ? `
+
+🥤 *Bebidas*
+${pedido.bebidas.map(b => 
+`✅ ${b.nome} (${b.qtd}x)`
+).join("\n")}
+` : ""}
 
 ━━━━━━━━━━━━━━━
 👤 Cliente: ${nome}
@@ -126,11 +148,4 @@ ${pagamento === "Dinheiro" && troco ? `💵 Troco para: R$ ${troco}` : ""}
 🚚 Entrega: R$ ${taxaEntrega.toFixed(2)}
 💰 *TOTAL: R$ ${totalFinal.toFixed(2)}*
 `;
-
-    window.open(
-        `https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`,
-        "_blank"
-    );
-
-    localStorage.removeItem("pedido");
 }

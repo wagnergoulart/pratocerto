@@ -1,30 +1,56 @@
 {
   "segunda": {
-    "nome": "Frango Grelhado",
-    "descricao": "Arroz, feijão, macarrão, salada e frango grelhado.",
-    "tamanhos": [
-      { "nome": "Marmita P - Frango", "preco": 18 },
-      { "nome": "Marmita P - 2 Carnes", "preco": 20 },
-      { "nome": "Marmita G - 2 Carnes", "preco": 26 }
-    ]
-  },
-
-  "terca": {
-    "nome": "Carne de Panela",
-    "descricao": "Arroz, feijão, purê, salada e carne macia.",
+    "nome": "Carne ao molho, tambaqui e frango frito",
+    "descricao": "Arroz, feijão, macarrão, polenta, refogado, beterraba ralada, carne ao molho, tambaqui frito e frango frito.",
     "tamanhos": [
       { "nome": "Marmita P - 1 Carne", "preco": 18 },
       { "nome": "Marmita P - 2 Carnes", "preco": 20 },
       { "nome": "Marmita G - 2 Carnes", "preco": 26 }
     ]
   },
-
-  "quarta": {
-    "nome": "Feijoada",
-    "descricao": "Feijão preto, arroz, farofa, couve e laranja.",
+  "terca": {
+    "nome": "Frango ao molho e bife acebolado",
+    "descricao": "Arroz, feijão, macarrão, polenta, refogado, salada, frango ao molho e bife acebolado.",
     "tamanhos": [
-      { "nome": "Marmita P", "preco": 20 },
-      { "nome": "Marmita G", "preco": 28 }
+      { "nome": "Marmita P - 1 Carne", "preco": 18 },
+      { "nome": "Marmita P - 2 Carnes", "preco": 20 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 26 }
+    ]
+  },
+  "quarta": {
+    "nome": "Costela ao molho, bisteca suína e frango frito",
+    "descricao": "Arroz, feijão, macarrão, mandioca cozida, beterraba cozida, costela ao molho, bisteca suína e frango frito.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne", "preco": 18 },
+      { "nome": "Marmita P - 2 Carnes", "preco": 20 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 26 }
+    ]
+  },
+  "quinta": {
+    "nome": "Bife acebolado, frango frito e vatapá ou estrogonofe",
+    "descricao": "Arroz, feijão, macarrão, refogado, bife acebolado, frango frito e vatapá ou estrogonofe.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne", "preco": 18 },
+      { "nome": "Marmita P - 2 Carnes", "preco": 20 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 26 }
+    ]
+  },
+  "sexta": {
+    "nome": "Costela ao molho e frango frito",
+    "descricao": "Arroz, feijão, macarrão, costela ao molho e frango frito.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne", "preco": 18 },
+      { "nome": "Marmita P - 2 Carnes", "preco": 20 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 26 }
+    ]
+  },
+  "sabado": {
+    "nome": "Feijoada, bife acebolado e frango frito",
+    "descricao": "Arroz, feijão, feijoada, macarrão, couve, farofa, torresmo, vinagrete, bife acebolado e frango frito.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne", "preco": 20 },
+      { "nome": "Marmita P - 2 Carnes", "preco": 22 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 28 }
     ]
   }
 }
