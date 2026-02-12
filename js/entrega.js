@@ -128,7 +128,6 @@ ${pedido.itens.map(item =>
 ).join("\n")}
 
 ${pedido.bebidas && pedido.bebidas.length > 0 ? `
-
 🥤 *Bebidas*
 ${pedido.bebidas.map(b => 
 `✅ ${b.nome} (${b.qtd}x)`
