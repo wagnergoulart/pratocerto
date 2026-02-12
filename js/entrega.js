@@ -134,14 +134,12 @@ ${pedido.bebidas.map(b =>
 `✅ ${b.nome} (${b.qtd}x)`
 ).join("\n")}
 ` : ""}
-
 ━━━━━━━━━━━━━━━
 👤 Cliente: ${nome}
 🚚 Bairro: ${bairro}
 📍 Endereço: ${rua}
 💳 Pagamento: ${pagamento}
 ${pagamento === "Dinheiro" && troco ? `💵 Troco para: R$ ${troco}` : ""}
-
 ━━━━━━━━━━━━━━━
 🧾 Subtotal: R$ ${subtotal.toFixed(2)}
 🚚 Entrega: R$ ${taxaEntrega.toFixed(2)}
