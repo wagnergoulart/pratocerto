@@ -111,12 +111,11 @@ function enviarWhats(){
         }
     }
 
-    const botao = document.querySelector("button");
+    const botao = document.querySelector("button[onclick='enviarWhats()']");
     botao.innerText = "Enviando pedido...";
     botao.disabled = true;
-    
-// Corpo da mendagem enviada
- let msg = `
+
+    let msg = `
 🧾 *PEDIDO ${pedido.id}*
 ━━━━━━━━━━━━━━━
 
@@ -148,4 +147,13 @@ ${pagamento === "Dinheiro" && troco ? `💵 Troco para: R$ ${troco}` : ""}
 🚚 Entrega: R$ ${taxaEntrega.toFixed(2)}
 💰 *TOTAL: R$ ${totalFinal.toFixed(2)}*
 `;
+
+    // 🔥 AQUI estava faltando!
+    window.open(
+        `https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`,
+        "_blank"
+    );
+
+    // limpa carrinho
+    localStorage.removeItem("pedido");
 }
