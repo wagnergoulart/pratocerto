@@ -34,7 +34,7 @@ fetch("cardapio.json")
     almocoHoje = data[diaJSON];
 
     document.getElementById("titulo").innerHTML =
-    `🍽️ ${diaBonito} — Almoço do Dia`;
+    `🍽️ ${diaBonito} — Cardápio do Dia`;
 
     document.getElementById("prato").innerHTML = `
         <h2>${almocoHoje.nome}</h2>

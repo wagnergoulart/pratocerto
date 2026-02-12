@@ -1,36 +1,32 @@
 {
   "bebidas": [
     {
-      "nome": "Tubaína 600ml (retornável)",
+      "nome": "Água com gás",
+      "preco": 4
+    },
+    {
+      "nome": "Água mineral",
+      "preco": 3
+    },
+    {
+      "nome": "Água tônica 350ml",
       "preco": 7
-    },
-    {
-      "nome": "Tubaína 300ml (retornável)",
-      "preco": 5
-    },
-    {
-      "nome": "Coca-Cola 600ml",
-      "preco": 7
-    },
-    {
-      "nome": "Coca-Cola 1L PET",
-      "preco": 10
     },
     {
       "nome": "Coca-Cola 1L (retornável)",
       "preco": 10
     },
     {
-      "nome": "Cola Dydyo 1L",
-      "preco": 6
+      "nome": "Coca-Cola 1L PET",
+      "preco": 10
     },
     {
       "nome": "Coca-Cola 2L",
       "preco": 13
     },
     {
-      "nome": "Refrigerante Tampico 2L",
-      "preco": 13
+      "nome": "Coca-Cola 600ml",
+      "preco": 7
     },
     {
       "nome": "Coca-Cola KS (retornável)",
@@ -41,16 +37,8 @@
       "preco": 6
     },
     {
-      "nome": "Pepsi lata 350ml",
+      "nome": "Cola Dydyo 1L",
       "preco": 6
-    },
-    {
-      "nome": "Sprite lata 350ml",
-      "preco": 6
-    },
-    {
-      "nome": "Fanta sabores 2L",
-      "preco": 13
     },
     {
       "nome": "Fanta lata 350ml",
@@ -61,16 +49,28 @@
       "preco": 10
     },
     {
-      "nome": "Água tônica 350ml",
+      "nome": "Fanta sabores 2L",
+      "preco": 13
+    },
+    {
+      "nome": "Pepsi lata 350ml",
+      "preco": 6
+    },
+    {
+      "nome": "Tampico 2L",
+      "preco": 13
+    },
+    {
+      "nome": "Sprite lata 350ml",
+      "preco": 6
+    },
+    {
+      "nome": "Tubaína 300ml (retornável)",
+      "preco": 5
+    },
+    {
+      "nome": "Tubaína 600ml (retornável)",
       "preco": 7
-    },
-    {
-      "nome": "Água com gás",
-      "preco": 4
-    },
-    {
-      "nome": "Água mineral",
-      "preco": 3
     }
   ],
   "outros": [
