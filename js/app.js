@@ -8,7 +8,7 @@ function gerarIDPedido(){
     return "PED-" + numero;
 }
 
-// PEGAR DIA FORMATADO
+// DATA
 const data = new Date();
 
 const diaFormatado = data.toLocaleDateString('pt-BR',{
@@ -20,7 +20,6 @@ const diaJSON = diaFormatado
 .replace(/[\u0300-\u036f]/g,"")
 .replace("-feira","");
 
-// CAPITALIZAR
 const diaBonito =
 diaFormatado.charAt(0).toUpperCase() +
 diaFormatado.slice(1);
@@ -42,11 +41,11 @@ fetch("cardapio.json")
     `;
 
     renderTamanhos();
-    atualizarTotal(); // inicia zerado na tela
+    atualizarTotal();
 });
 
 
-// RENDER TAMANHOS
+// RENDER
 function renderTamanhos(){
 
     const div = document.getElementById("tamanhos");
@@ -60,7 +59,7 @@ function renderTamanhos(){
         <div class="item">
             <div class="item-info">
                 <strong>${t.nome}</strong><br>
-                <span class="preco">R$ ${t.preco.toFixed(2)}</span>
+                <span class="preco">R$ ${Number(t.preco).toFixed(2)}</span>
             </div>
 
             <div class="contador">
@@ -80,7 +79,7 @@ function renderTamanhos(){
 function aumentar(i){
 
     const el = document.getElementById(`qtd-${i}`);
-    let valor = parseInt(el.innerText);
+    let valor = Number(el.innerText) || 0;
 
     el.innerText = valor + 1;
 
@@ -90,7 +89,7 @@ function aumentar(i){
 function diminuir(i){
 
     const el = document.getElementById(`qtd-${i}`);
-    let valor = parseInt(el.innerText);
+    let valor = Number(el.innerText) || 0;
 
     if(valor > 0){
         el.innerText = valor - 1;
@@ -100,62 +99,59 @@ function diminuir(i){
 }
 
 
-// 🔥 CALCULAR TOTAL (FUNÇÃO CORRETA)
+// TOTAL
 function atualizarTotal(){
 
     total = 0;
 
     almocoHoje.tamanhos.forEach((t,i)=>{
 
-        const qtd =
-        Number(document.getElementById(`qtd-${i}`).innerText);
+        const qtd = Number(
+            document.getElementById(`qtd-${i}`).innerText
+        ) || 0;
 
         total += qtd * Number(t.preco);
     });
 
     document.getElementById("total")
-    .innerText = "Total: R$ " + total.toFixed(2);
+    .innerText = "💰 Total: R$ " + total.toFixed(2);
 }
 
 
 // IR PARA ENTREGA
 function irParaEntrega(){
 
-    atualizarTotal(); // garante valor atualizado
+    atualizarTotal();
 
-    if(total === 0){
+    if(total <= 0){
         alert("Selecione pelo menos uma marmita 🙂");
         return;
     }
 
-    const idPedido = gerarIDPedido();
-
-    let pedido = {
-        id: idPedido,
+    const pedido = {
+        id: gerarIDPedido(),
         dia: diaBonito,
         prato: almocoHoje.nome,
         itens: [],
-        subtotal: Number(total)
+        total: Number(total)
     };
 
     almocoHoje.tamanhos.forEach((t,i)=>{
 
         const qtd = Number(
-            document.getElementById(`qtd-${i}`).innerText);
+            document.getElementById(`qtd-${i}`).innerText
+        );
 
         if(qtd > 0){
             pedido.itens.push({
                 nome: t.nome,
                 qtd: qtd,
-                preco: t.preco
+                preco: Number(t.preco)
             });
         }
     });
 
-    localStorage.setItem(
-        "pedido",
-        JSON.stringify(pedido)
-    );
+    localStorage.setItem("pedido", JSON.stringify(pedido));
 
     window.location.href = "entrega.html";
 }

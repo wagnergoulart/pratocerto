@@ -1,6 +1,5 @@
 const telefone = "5569999979438";
 
-// 🔥 RECUPERA PEDIDO
 const pedido = JSON.parse(localStorage.getItem("pedido"));
 
 if(!pedido){
@@ -8,13 +7,15 @@ if(!pedido){
     window.location.href = "index.html";
 }
 
-// 👇 GARANTE NÚMERO
-const subtotal = Number(pedido.total) || 0;
+// Compatível com versões antigas
+const subtotal = Number(
+    pedido.total ?? pedido.subtotal
+) || 0;
 
 let taxaEntrega = 0;
 
 
-// 🔥 CARREGAR BAIRROS
+// BAIRROS
 fetch("bairros.json")
 .then(res => res.json())
 .then(bairros => {
@@ -25,7 +26,7 @@ fetch("bairros.json")
 
         select.innerHTML += `
             <option value="${nome}">
-                ${nome} - R$ ${bairros[nome].toFixed(2)}
+                ${nome} - R$ ${Number(bairros[nome]).toFixed(2)}
             </option>`;
     });
 
@@ -51,28 +52,26 @@ function atualizarTaxa(){
 
 function calcularTotalFinal(){
 
-    const totalFinal = subtotal + taxaEntrega;
+    const totalFinal = Number(subtotal) + Number(taxaEntrega);
 
     document.getElementById("totalFinal").innerText =
         "💰 Total: R$ " + totalFinal.toFixed(2);
 }
 
 
-// 🔥 MOSTRAR CAMPO TROCO
+// TROCO
 const pagamentoSelect = document.getElementById("pagamento");
 
 pagamentoSelect.addEventListener("change", ()=>{
 
-    const trocoBox = document.getElementById("trocoBox");
-
-    trocoBox.style.display =
+    document.getElementById("trocoBox").style.display =
         pagamentoSelect.value === "Dinheiro"
         ? "flex"
         : "none";
 });
 
 
-// 🚀 ENVIAR WHATS
+// WHATS
 function enviarWhats(){
 
     const nome = document.getElementById("nome").value.trim();
@@ -100,12 +99,10 @@ function enviarWhats(){
         }
     }
 
-    // 🔥 TRAVAR BOTÃO
     const botao = document.querySelector("button");
     botao.innerText = "Enviando pedido...";
     botao.disabled = true;
 
-    // 🔥 MENSAGEM
     let msg = `
 🧾 *PEDIDO ${pedido.id}*
 ━━━━━━━━━━━━━━━
