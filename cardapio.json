@@ -60,14 +60,5 @@
       { "nome": "Kit Feijoada 1L | Com Arroz", "descricaoIndividual": "Arroz, Couve, Farofa e Torresmo", "preco": 50 }   
 
     ]
-  },
-  "domingo": {
-    "nome": "Costela ao molho e frango frito",
-    "descricao": "Arroz, feijão, macarrão, costela ao molho e frango frito.",
-    "tamanhos": [
-      { "nome": "Marmita P - 1 Carne Frango", "preco": 18 },
-      { "nome": "Marmita M - 2 Carnes", "preco": 22 },
-      { "nome": "Marmita G - 2 Carnes", "preco": 24 }
-    ]
   }
 }
