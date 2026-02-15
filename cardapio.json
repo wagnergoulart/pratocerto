@@ -1,0 +1,64 @@
+{
+  "segunda": {
+    "nome": "Carne ao molho, tambaqui e frango frito",
+    "descricao": "Arroz, feijão, macarrão, polenta, refogado, beterraba ralada, carne ao molho, tambaqui frito e frango frito.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne Frango", "preco": 18 },
+      { "nome": "Marmita M - 2 Carnes", "preco": 22 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 24 }
+    ]
+  },
+  "terca": {
+    "nome": "Frango ao molho e bife acebolado",
+    "descricao": "Arroz, feijão, macarrão, polenta, refogado, salada, frango ao molho e bife acebolado.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne Frango", "preco": 18 },
+      { "nome": "Marmita M - 2 Carnes", "preco": 22 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 24 }
+    ]
+  },
+  "quarta": {
+    "nome": "Costela ao molho, bisteca suína e frango frito",
+    "descricao": "Arroz, feijão, macarrão, mandioca cozida, beterraba cozida, costela ao molho, bisteca suína e frango frito.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne Frango", "preco": 18 },
+      { "nome": "Marmita M - 2 Carnes", "preco": 22 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 24 }
+    ]
+  },
+  "quinta": {
+    "nome": "Bife acebolado, frango frito e vatapá ou estrogonofe",
+    "descricao": "Arroz, feijão, macarrão, refogado, bife acebolado, frango frito e vatapá ou estrogonofe.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne Frango", "preco": 18 },
+      { "nome": "Marmita M - 2 Carnes", "preco": 22 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 24 }
+    ]
+  },
+  "sexta": {
+    "nome": "Costela ao molho e frango frito",
+    "descricao": "Arroz, feijão, macarrão, costela ao molho e frango frito.",
+    "tamanhos": [
+      { "nome": "Marmita P - 1 Carne Frango", "preco": 18 },
+      { "nome": "Marmita M - 2 Carnes", "preco": 22 },
+      { "nome": "Marmita G - 2 Carnes", "preco": 24 }
+    ]
+  },
+  "sabado": {
+    "nome": "Dia de feijoada!",
+    "descricao": "",
+    "tamanhos": [
+      { "nome": "Marmita M | Feijoada - 2 Carnes", "descricaoIndividual":"Arroz, feijoada, macarrão, couve, farofa, vinagrete, bife acebolado e frango frito.", "preco": 23 },
+      { "nome": "Marmita G | Feijoada - 2 Carnes", "descricaoIndividual":"Arroz, feijoada, macarrão, couve, farofa, vinagrete, bife acebolado e frango frito.", "preco": 25 },
+
+      { "nome": "Marmita P - 1 Carne Frango", "descricaoIndividual": "Arroz, Feijão, Macarrão, Bife acebolado, Frango frito, Couve, Farofa e Vinagrete", "preco": 18 },
+      { "nome": "Marmita M - 2 Carnes", "descricaoIndividual": "Arroz, Feijão, Macarrão, Bife acebolado, Frango frito, Couve, Farofa e Vinagrete", "preco": 22 },
+      { "nome": "Marmita G - 2 Carnes", "descricaoIndividual": "Arroz, Feijão, Macarrão, Bife acebolado, Frango frito, Couve, Farofa e Vinagrete", "preco": 24 },
+
+      { "nome": "Feijoada 1L", "preco": 35 },
+      { "nome": "Kit Feijoada 1L | Sem Arroz", "descricaoIndividual": "Couve, Farofa e Torresmo", "preco": 45 },
+      { "nome": "Kit Feijoada 1L | Com Arroz", "descricaoIndividual": "Arroz, Couve, Farofa e Torresmo", "preco": 50 }   
+
+    ]
+  }
+}
