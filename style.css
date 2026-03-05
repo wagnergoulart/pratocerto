@@ -84,11 +84,17 @@ h1{
 }
 
 .whatsapp{
-    width:60px;
-    height:60px;
+    position:fixed;
+    bottom:80px; /* antes estava 20px ou 30px */
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:12px;
     border-radius:50%;
+    display:flex;
     justify-content:center;
-    padding:0;
+    align-items:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
 }
